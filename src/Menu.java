@@ -55,23 +55,22 @@ public class Menu {
                 System.out.println("\n{ 0 } Sair");
                 int menu = scanner.nextInt();
 
-
                 if (menu ==0 ) {
                         System.out.println("Saindo . . .");
                         return;
                 }else {
                         switch (menu){
                                 case 1:
-                                        //adicionarAluno();
+                                        Aluno.adicionarAluno();
                                         break;
                                 case 2:
-                                        //listarAlunos();
+                                        Aluno.listarAlunos();
                                         break;
                                 case 3:
-                                        //matricular();
+                                        Aluno.matricular();
                                         break;
                                 case 4:
-                                        //listarPorAtendimentos();
+                                        Aluno.listarPorAtendimentos();
                                         break;
                                 case 5:
                                         menuPrincipal();
@@ -84,10 +83,6 @@ public class Menu {
                                         break;
                         }
                 }
-
-
-
-
         }
         private static void exibeMenuProfessores() {
                 Scanner scanner = new Scanner(System.in);

@@ -1,11 +1,25 @@
 import java.util.Scanner;
 public class Aluno extends Pessoa {
-    private String matricula;
+    private static String matricula;
     public Aluno(String nome, String telefone, String dataNascimento, String cpf) {
         super(nome, telefone, dataNascimento, cpf);
         matricular();
     }
-    public void matricular() {
+    public static void adicionarAluno(){
+
+    }
+
+    public static void listarAlunos(){
+
+    }
+
+
+    public static void listarPorAtendimentos() {
+
+    }
+
+
+        public static void matricular() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Digite o estado da matricula: " +
                 "\n1 Para Ativo" +
@@ -28,8 +42,7 @@ public class Aluno extends Pessoa {
                 break;
             default:
                 System.out.println("Entrada inválida!");
-
-
+                return;
         }
     }
 @Override
