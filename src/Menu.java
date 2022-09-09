@@ -40,7 +40,6 @@ public class Menu {
                         }
                 }
         }
-
         private static void exibeMenuAlunos() {
                 Scanner scanner = new Scanner(System.in);
                 System.out.println("\n ___________________________________");
@@ -61,16 +60,20 @@ public class Menu {
                 }else {
                         switch (menu){
                                 case 1:
-                                        Aluno.adicionarAluno();
+                                        Aluno.adicionarAluno(Aluno.listaDeAlunos);
+                                        exibeMenuAlunos();
                                         break;
                                 case 2:
-                                        Aluno.listarAlunos();
+                                        Aluno.listarAlunos(Aluno.getListaDeAlunos());
+                                        exibeMenuAlunos();
                                         break;
                                 case 3:
                                         Aluno.matricular();
+                                        exibeMenuAlunos();
                                         break;
                                 case 4:
-                                        Aluno.listarPorAtendimentos();
+                                        //Aluno.listarPorAtendimentos();
+                                        exibeMenuAlunos();
                                         break;
                                 case 5:
                                         menuPrincipal();
