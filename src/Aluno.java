@@ -1,10 +1,11 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 public class Aluno extends Pessoa {
     /*private*/ static ArrayList <Aluno> listaDeAlunos = new ArrayList<>(); //*********** PRIVATE
     private static String matricula;
 
-    private static int numeroDeAtendimentos = 0;
+    private int numeroDeAtendimentos = 0;
 
     public Aluno(String nome, String telefone, String dataNascimento, String cpf) {
         super(nome, telefone, dataNascimento, cpf);
@@ -37,7 +38,7 @@ public class Aluno extends Pessoa {
             }
         }
     }
-    public static void matricular() {
+    public static String matricular() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Digite o estado da matricula: " +
                 "\n1 Para Ativo" +
@@ -47,44 +48,44 @@ public class Aluno extends Pessoa {
         int status = scanner.nextInt();
         switch (status) {
             case 1:
-                setMatricula("Ativa");
+                matricula = "Ativa";
                 break;
             case 2:
-                setMatricula("Irregular");
+                matricula = "Irregular";
                 break;
             case 3:
-                setMatricula("Em atendimento Pedagogico");
+                matricula = "Em atendimento Pedagogico";
                 break;
             case 4:
-                setMatricula("Inativo");
+                matricula = "Inativo";
                 break;
             default:
                 System.out.println("Entrada inválida!");
                 matricular();
                 break;
         }
+
+        return matricula;
     }
 
-    public static void adicionaAtendimento(Aluno aluno){
+    private void adicionaAtendimento(){
         numeroDeAtendimentos++;
+    }
+    public static void adicionaAtendimento(Aluno aluno){
+        aluno.adicionaAtendimento();
     }
 
     public static void listarPorAtendimentos() {
         listaDeAlunos.sort((Aluno1,Aluno2) ->{
             return Aluno1.getNumeroDeAtendimentos() < Aluno2.getNumeroDeAtendimentos() ? -1 :1;});
+        Collections.reverse(listaDeAlunos);
         listarAlunos();
     }
 
     public static ArrayList<Aluno> getListaDeAlunos() {
         return listaDeAlunos;
     }
-
-    @Override
-    public String toString() {
-        super.toString();
-        return super.toString()+ "\nStatus da matricula: "+matricula+"\nNumero de atendimentos pedagogicos: "+numeroDeAtendimentos;
-    }
-
+    //_____________________________GETTER E SETTER_______________________________________________
     public static void setListaDeAlunos(ArrayList<Aluno> listaDeAlunos) {
         Aluno.listaDeAlunos = listaDeAlunos;
     }
@@ -105,6 +106,11 @@ public class Aluno extends Pessoa {
         this.numeroDeAtendimentos = numeroDeAtendimentos;
     }
 
-
+    //__________________________________TO STRING___________________________________________________
+    @Override
+    public String toString() {
+        super.toString();
+        return super.toString()+ "\nStatus da matricula: "+matricula+"\nNumero de atendimentos pedagogicos: "+numeroDeAtendimentos;
+    }
 
 }

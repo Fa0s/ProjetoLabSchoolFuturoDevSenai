@@ -107,16 +107,20 @@ public class Menu {
                 }else {
                         switch (menu){
                                 case 1:
-                                        //adicionarProfessor();
+                                        Professor.adicionarProfessor(Professor.listaDeProfessores);
+                                        exibeMenuProfessores();
                                         break;
                                 case 2:
-                                        //listarProfessores();
+                                        Professor.listarProfessores();
+                                        exibeMenuProfessores();
                                         break;
                                 case 3:
-                                        //ListarProfessoresPorExperiencia();
+                                        Professor.ListarProfessoresPorExperiencia();
+                                        exibeMenuProfessores();
                                         break;
                                 case 4:
-                                        //ListarProfessoresPorAtividade();
+                                        Professor.ListarProfessoresPorAtividade();
+                                        exibeMenuProfessores();
                                         break;
                                 case 5:
                                         menuPrincipal();
@@ -125,7 +129,7 @@ public class Menu {
                                         return;
                                 default:
                                         System.out.println("Opção inválida!");
-                                        exibeMenuAlunos();
+                                        exibeMenuProfessores();
                                         break;
                         }
                 }
@@ -162,7 +166,8 @@ public class Menu {
                                         exibeMenuPedagogos();
                                         break;
                                 case 4:
-                                        //ListarPedagogosPorAtendimento();
+                                        Pedagogo.listarPorAtendimentos();
+                                        exibeMenuPedagogos();
                                         break;
                                 case 5:
                                         menuPrincipal();
@@ -171,7 +176,7 @@ public class Menu {
                                         return;
                                 default:
                                         System.out.println("Opção inválida!");
-                                        exibeMenuAlunos();
+                                        exibeMenuPedagogos();
                                         break;
                         }
                 }
