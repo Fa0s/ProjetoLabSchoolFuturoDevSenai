@@ -64,7 +64,7 @@ public class Menu {
                                         exibeMenuAlunos();
                                         break;
                                 case 2:
-                                        Aluno.listarAlunos(Aluno.getListaDeAlunos());
+                                        Aluno.listarAlunos();
                                         exibeMenuAlunos();
                                         break;
                                 case 3:
@@ -72,7 +72,7 @@ public class Menu {
                                         exibeMenuAlunos();
                                         break;
                                 case 4:
-                                        //Aluno.listarPorAtendimentos();
+                                        Aluno.listarPorAtendimentos();
                                         exibeMenuAlunos();
                                         break;
                                 case 5:
@@ -150,13 +150,16 @@ public class Menu {
                 }else {
                         switch (menu){
                                 case 1:
-                                        //adicionarPedagogo();
+                                        Pedagogo.adicionarPedagogo(Pedagogo.listaDePedagogos);
+                                        exibeMenuPedagogos();
                                         break;
                                 case 2:
-                                        //listarPedagogos();
+                                        Pedagogo.listarPedagogos();
+                                        exibeMenuPedagogos();
                                         break;
                                 case 3:
-                                        //atendimentoPedagogico();
+                                        Pedagogo.atendimentoPedagogico();
+                                        exibeMenuPedagogos();
                                         break;
                                 case 4:
                                         //ListarPedagogosPorAtendimento();

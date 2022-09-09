@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Aluno extends Pessoa {
-    static ArrayList <Aluno> listaDeAlunos = new ArrayList<>();
+    /*private*/ static ArrayList <Aluno> listaDeAlunos = new ArrayList<>(); //*********** PRIVATE
     private static String matricula;
 
-    private int numeroDeAtendimentos = 0;
+    private static int numeroDeAtendimentos = 0;
 
     public Aluno(String nome, String telefone, String dataNascimento, String cpf) {
         super(nome, telefone, dataNascimento, cpf);
@@ -26,13 +26,13 @@ public class Aluno extends Pessoa {
 
         alunos.add(new Aluno(nome,telefone,dataNascimento,cpf));
     }
-    public static void listarAlunos(ArrayList<Aluno> alunos) {
-        if (alunos.size() == 0)
+    public static void listarAlunos() {
+        if (listaDeAlunos.size() == 0)
             System.out.println("\nSua lista de alunos está vazia!");
         else {
             System.out.println("\n Lista de Alunos:");
-            for (int i = 0; i < alunos.size(); i++) {
-                System.out.println("[" + (i+1) + "] " + alunos.get(i)); // quando for necessario selecionar um determinado aluno precisa dar -1,pois o index so esta
+            for (int i = 0; i < listaDeAlunos.size(); i++) {
+                System.out.println("\n[" + (i+1) + "] " + listaDeAlunos.get(i)); // quando for necessario selecionar um determinado aluno precisa dar -1,pois o index so esta
                                                                         // sendo exibido a partir de 1.
             }
         }
@@ -47,16 +47,16 @@ public class Aluno extends Pessoa {
         int status = scanner.nextInt();
         switch (status) {
             case 1:
-                matricula = "ativa";
+                setMatricula("Ativa");
                 break;
             case 2:
-                matricula = "irregular";
+                setMatricula("Irregular");
                 break;
             case 3:
-                matricula = "Em atendimento pedagógico";
+                setMatricula("Em atendimento Pedagogico");
                 break;
             case 4:
-                matricula = "inativa";
+                setMatricula("Inativo");
                 break;
             default:
                 System.out.println("Entrada inválida!");
@@ -64,16 +64,25 @@ public class Aluno extends Pessoa {
                 break;
         }
     }
-@Override
-    public String toString() {
-        super.toString();
-        return super.toString()+ "\nA matricula do aluno "+getNome()+" está: "+matricula+"O numero de atendimentos pedagogicos do aluno "+getNome()+"é: "+numeroDeAtendimentos;
+
+    public static void adicionaAtendimento(Aluno aluno){
+        numeroDeAtendimentos++;
     }
 
-
+    public static void listarPorAtendimentos() {
+        listaDeAlunos.sort((Aluno1,Aluno2) ->{
+            return Aluno1.getNumeroDeAtendimentos() < Aluno2.getNumeroDeAtendimentos() ? -1 :1;});
+        listarAlunos();
+    }
 
     public static ArrayList<Aluno> getListaDeAlunos() {
         return listaDeAlunos;
+    }
+
+    @Override
+    public String toString() {
+        super.toString();
+        return super.toString()+ "\nStatus da matricula: "+matricula+"\nNumero de atendimentos pedagogicos: "+numeroDeAtendimentos;
     }
 
     public static void setListaDeAlunos(ArrayList<Aluno> listaDeAlunos) {
@@ -87,4 +96,15 @@ public class Aluno extends Pessoa {
     public static void setMatricula(String matricula) {
         Aluno.matricula = matricula;
     }
+
+    public int getNumeroDeAtendimentos() {
+        return numeroDeAtendimentos;
+    }
+
+    public void setNumeroDeAtendimentos(int numeroDeAtendimentos) {
+        this.numeroDeAtendimentos = numeroDeAtendimentos;
+    }
+
+
+
 }
