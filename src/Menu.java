@@ -60,7 +60,7 @@ public class Menu {
                 }else {
                         switch (menu){
                                 case 1:
-                                        Aluno.adicionarAluno(Aluno.listaDeAlunos);
+                                        Aluno.adicionarAluno();
                                         exibeMenuAlunos();
                                         break;
                                 case 2:
@@ -68,7 +68,7 @@ public class Menu {
                                         exibeMenuAlunos();
                                         break;
                                 case 3:
-                                        Aluno.matricular();
+                                        Aluno.alterarMatricula(); //pedir indice
                                         exibeMenuAlunos();
                                         break;
                                 case 4:

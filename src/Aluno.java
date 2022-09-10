@@ -2,8 +2,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 public class Aluno extends Pessoa {
-    /*private*/ static ArrayList <Aluno> listaDeAlunos = new ArrayList<>(); //*********** PRIVATE
-    private static String matricula;
+    private static ArrayList <Aluno> listaDeAlunos = new ArrayList<>(); //*********** PRIVATE
+    private String matricula;
 
     private int numeroDeAtendimentos = 0;
 
@@ -11,10 +11,10 @@ public class Aluno extends Pessoa {
         super(nome, telefone, dataNascimento, cpf);
         matricular();
     }
-    public static void adicionarAluno(ArrayList<Aluno> alunos){
+    public static void adicionarAluno(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Digite o nome do Aluno: ");
-        String nome = scanner.next();
+        String nome = scanner.nextLine();
 
         System.out.println("Digite o telefone: ");
         String telefone = scanner.next();
@@ -25,7 +25,7 @@ public class Aluno extends Pessoa {
         System.out.println("Digite o cpf: ");
         String cpf =  scanner.next();
 
-        alunos.add(new Aluno(nome,telefone,dataNascimento,cpf));
+        Aluno.getListaDeAlunos().add(new Aluno(nome,telefone,dataNascimento,cpf));
     }
     public static void listarAlunos() {
         if (listaDeAlunos.size() == 0)
@@ -38,7 +38,7 @@ public class Aluno extends Pessoa {
             }
         }
     }
-    public static String matricular() {
+    public  String matricular() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Digite o estado da matricula: " +
                 "\n1 Para Ativo" +
@@ -68,13 +68,19 @@ public class Aluno extends Pessoa {
         return matricula;
     }
 
-    private void adicionaAtendimento(){
-        numeroDeAtendimentos++;
-    }
-    public static void adicionaAtendimento(Aluno aluno){
-        aluno.adicionaAtendimento();
+    public static void alterarMatricula() {
+        Scanner scanner = new Scanner(System.in);
+        listarAlunos();
+        int indice = scanner.nextInt();
+        Aluno aluno = Aluno.getListaDeAlunos().get(indice - 1);
+        aluno.matricular();
+
     }
 
+    public void adicionaAtendimento(){
+        numeroDeAtendimentos++;
+        setMatricula("Em Atendimento Pedagógico");
+    }
     public static void listarPorAtendimentos() {
         listaDeAlunos.sort((Aluno1,Aluno2) ->{
             return Aluno1.getNumeroDeAtendimentos() < Aluno2.getNumeroDeAtendimentos() ? -1 :1;});
@@ -82,20 +88,20 @@ public class Aluno extends Pessoa {
         listarAlunos();
     }
 
+    //_____________________________GETTER E SETTER_______________________________________________
     public static ArrayList<Aluno> getListaDeAlunos() {
         return listaDeAlunos;
     }
-    //_____________________________GETTER E SETTER_______________________________________________
     public static void setListaDeAlunos(ArrayList<Aluno> listaDeAlunos) {
         Aluno.listaDeAlunos = listaDeAlunos;
     }
 
-    public static String getMatricula() {
+    public  String getMatricula() {
         return matricula;
     }
 
-    public static void setMatricula(String matricula) {
-        Aluno.matricula = matricula;
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
     }
 
     public int getNumeroDeAtendimentos() {
@@ -106,7 +112,9 @@ public class Aluno extends Pessoa {
         this.numeroDeAtendimentos = numeroDeAtendimentos;
     }
 
+
     //__________________________________TO STRING___________________________________________________
+
     @Override
     public String toString() {
         super.toString();

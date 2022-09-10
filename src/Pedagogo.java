@@ -57,11 +57,11 @@ public class Pedagogo extends Pessoa{
         listarPedagogos();
         int idicePedagogo = scanner.nextInt();
         Pedagogo pedagogo = Pedagogo.getListaDePedagogos().get(idicePedagogo-1);
+
         System.out.println("\nPedagogo "+pedagogo.getNome()+" esta em atendimento pedagógico com o aluno "+aluno.getNome());
 
         pedagogo.adicionaAtendimento();
-        Aluno.adicionaAtendimento(aluno);
-        aluno.setMatricula("Em Atendimento Pedagógico");
+        aluno.adicionaAtendimento();
     }
 
     private void adicionaAtendimento(){
