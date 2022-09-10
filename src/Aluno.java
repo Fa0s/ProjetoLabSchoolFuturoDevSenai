@@ -38,7 +38,7 @@ public class Aluno extends Pessoa {
             }
         }
     }
-    public  String matricular() {
+    public String matricular() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Digite o estado da matricula: " +
                 "\n1 Para Ativo" +
@@ -111,7 +111,6 @@ public class Aluno extends Pessoa {
     public void setNumeroDeAtendimentos(int numeroDeAtendimentos) {
         this.numeroDeAtendimentos = numeroDeAtendimentos;
     }
-
 
     //__________________________________TO STRING___________________________________________________
 

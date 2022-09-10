@@ -115,7 +115,7 @@ public class Menu {
                                         exibeMenuProfessores();
                                         break;
                                 case 3:
-                                        Professor.ListarProfessoresPorExperiencia();
+                                        Professor.ListarProfessoresPorExperienciaDev();
                                         exibeMenuProfessores();
                                         break;
                                 case 4:

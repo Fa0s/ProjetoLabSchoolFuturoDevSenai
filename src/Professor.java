@@ -2,18 +2,15 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Professor extends Pessoa{
-    private static String formacaoAcademica = "";
-    private static String experienciaDev = "";
-    private static String estado = "";
+    private String graduacao;
+    private String experienciaDev="";
+    private String estado;
 
     static ArrayList<Professor> listaDeProfessores = new ArrayList<>();
 
 
     public Professor(String nome, String telefone, String dataNascimento, String cpf) {
         super(nome, telefone, dataNascimento, cpf);
-        this.formacaoAcademica = formacaoAcademica;
-        this.experienciaDev = experienciaDev;
-        this.estado = estado;
         defineFormacaoAcademica();
         defineExperienciaDev();
         defineEstado();
@@ -21,7 +18,7 @@ public class Professor extends Pessoa{
     public static void adicionarProfessor(ArrayList<Professor> professores) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Digite o nome do Professor: ");
-        String nome = scanner.next();
+        String nome = scanner.nextLine();
 
         System.out.println("Digite o telefone: ");
         String telefone = scanner.next();
@@ -35,7 +32,7 @@ public class Professor extends Pessoa{
         professores.add(new Professor(nome,telefone,dataNascimento,cpf));
     }
 
-    public static String defineFormacaoAcademica(){
+    public String defineFormacaoAcademica(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("\nSelecione a Graduação do Professor: " +
                 "\n1 Graduação incompleta" +
@@ -45,16 +42,16 @@ public class Professor extends Pessoa{
         int graduacao = scanner.nextInt();
         switch (graduacao) {
             case 1:
-                formacaoAcademica = "Graduação incompleta";
+                this.graduacao = "Graduação incompleta";
                 break;
             case 2:
-                formacaoAcademica = "Graduação completa";
+                this.graduacao = "Graduação completa";
                 break;
             case 3:
-                formacaoAcademica = "Mestrado";
+                this.graduacao = "Mestrado";
                 break;
             case 4:
-                formacaoAcademica = "Doutorado";
+                this.graduacao = "Doutorado";
                 break;
             default:
                 System.out.println("Entrada inválida!");
@@ -62,10 +59,10 @@ public class Professor extends Pessoa{
                 break;
         }
 
-        return formacaoAcademica;
+        return this.graduacao;
     }
 
-    public static String defineExperienciaDev(){
+    public String defineExperienciaDev(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("\nSelecione a experiência em desenvolvimento do Professor: " +
                 "\n1 Front-End" +
@@ -88,10 +85,10 @@ public class Professor extends Pessoa{
                 break;
         }
 
-        return formacaoAcademica;
+        return graduacao;
     }
 
-    public static String defineEstado(){
+    public String defineEstado(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("\nSelecione a estado do Professor: " +
                 "\n1 Ativo" +
@@ -109,7 +106,6 @@ public class Professor extends Pessoa{
                 defineEstado();
                 break;
         }
-
         return estado;
     }
 
@@ -125,9 +121,79 @@ public class Professor extends Pessoa{
         }
     }
 
-    public static void ListarProfessoresPorExperiencia() {
+    public static void ListarProfessoresPorExperienciaDev() {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Professor> professoresDev = new ArrayList<>();
+        String filtroDev="";
+        System.out.println("Selecione a area de desenvolvimento:");
+        System.out.println("{ 1 } Front-End");
+        System.out.println("{ 2 } Back-End");
+        System.out.println("{ 3 } Full-Stack");
+        int selecao = scanner.nextInt();
+
+        switch (selecao){
+            case 1:
+                filtroDev = "Front-end";
+                break;
+            case 2:
+                filtroDev = "Back-End";
+                break;
+            case 3:
+                filtroDev = "Full-Stack";
+            default:
+                System.out.println("Opção inválida!");
+        }
+        for (Professor listaDeProfessore : listaDeProfessores) {
+            if (filtroDev.equalsIgnoreCase(listaDeProfessore.getExperienciaDev())) {
+                professoresDev.add(listaDeProfessore);
+            }
+        }
+
+        for (Professor professor : professoresDev) {
+            System.out.println(professor.toString());
+        }
     }
+
 
     public static void ListarProfessoresPorAtividade() {
     }
+
+    public String getGraduacao() {
+        return graduacao;
+    }
+
+    public void setGraduacao(String graduacao) {
+        this.graduacao = graduacao;
+    }
+
+    public String getExperienciaDev() {
+        return experienciaDev;
+    }
+
+    public void setExperienciaDev(String experienciaDev) {
+        this.experienciaDev = experienciaDev;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public static ArrayList<Professor> getListaDeProfessores() {
+        return listaDeProfessores;
+    }
+
+    public static void setListaDeProfessores(ArrayList<Professor> listaDeProfessores) {
+        Professor.listaDeProfessores = listaDeProfessores;
+    }
+
+    @Override
+    public String toString() {
+        super.toString();
+        return super.toString()+"\nGraduação "+graduacao+"\nExperiência em desenvolvimento: "+experienciaDev+"\nEstado: "+estado;
+    }
+
 }
