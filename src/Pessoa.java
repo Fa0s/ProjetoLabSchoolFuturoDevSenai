@@ -32,7 +32,9 @@ public class Pessoa {
         if (listaDePessoas.size() == 0) {
             System.out.println("Não existem pessoas cadastradas");
         } else {
-            System.out.println(listaDePessoas);
+            for (int i = 0; i < listaDePessoas.size(); i++) {
+                System.out.println("\n[" + (i + 1) + "] " + listaDePessoas.get(i));
+            }
         }
     }
 
@@ -43,7 +45,9 @@ public class Pessoa {
         if (listaFuncionarios.size() == 0) {
             System.out.println("Não existem funcionários cadastradas");
         } else {
-            System.out.println(listaFuncionarios);
+            for (int i = 0; i < listaFuncionarios.size(); i++) {
+                System.out.println("\n[" + (i+1) + "] " + listaFuncionarios.get(i));
+            }
         }
     }
 

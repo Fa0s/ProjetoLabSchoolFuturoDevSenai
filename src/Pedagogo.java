@@ -87,6 +87,6 @@ public class Pedagogo extends Pessoa{
     @Override
     public String toString() {
         super.toString();
-        return super.toString()+"\nNumero de atendimentos pedagogicos: "+ numeroDeAtendimentos;
+        return super.toString()+" Numero de atendimentos pedagogicos: " + numeroDeAtendimentos+" |";
     }
 }

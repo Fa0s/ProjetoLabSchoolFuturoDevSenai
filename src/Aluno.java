@@ -160,5 +160,4 @@ public class Aluno extends Pessoa {
         super.toString();
         return super.toString()+" Nota: "+notaProcessoSeletivo+ " | Matricula: "+matricula+" | Atendimentos pedagógicos: "+numeroDeAtendimentos+" |";
     }
-
 }
