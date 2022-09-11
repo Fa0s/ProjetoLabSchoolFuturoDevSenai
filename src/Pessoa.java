@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.UUID;
 public class Pessoa {
     private String nome;
@@ -5,6 +6,7 @@ public class Pessoa {
     private String dataNascimento;
     private String cpf;
     private String ID;
+
     public Pessoa(String nome, String telefone, String dataNascimento, String cpf) {
         this.nome = nome;
         this.telefone = telefone;
@@ -12,11 +14,37 @@ public class Pessoa {
         this.cpf = cpf;
         geraID();
     }
+
     private void geraID(){
         ID = UUID.randomUUID().toString();
     }
+
     public String getNome() {
         return nome;
+    }
+
+    public static void exibeTodasAsPessoas() {
+        ArrayList<Pessoa> listaDePessoas = new ArrayList<>();
+        listaDePessoas.addAll(Aluno.getListaDeAlunos());
+        listaDePessoas.addAll(Professor.getListaDeProfessores());
+        listaDePessoas.addAll(Pedagogo.getListaDePedagogos());
+
+        if (listaDePessoas.size() == 0) {
+            System.out.println("Não existem pessoas cadastradas");
+        } else {
+            System.out.println(listaDePessoas);
+        }
+    }
+
+    public static void exibeFuncionarios(){
+        ArrayList<Pessoa>listaFuncionarios = new ArrayList<>();
+        listaFuncionarios.addAll(Professor.getListaDeProfessores());
+        listaFuncionarios.addAll(Pedagogo.getListaDePedagogos());
+        if (listaFuncionarios.size() == 0) {
+            System.out.println("Não existem funcionários cadastradas");
+        } else {
+            System.out.println(listaFuncionarios);
+        }
     }
 
     public void setNome(String nome) {
@@ -46,12 +74,10 @@ public class Pessoa {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
+
     @Override
     public String toString() {
-        return  "Nome: "+nome+
-                "\nTelefone: "+telefone+"" +
-                "\nData de Nascimento: "+dataNascimento+
-                "\nCPF: "+cpf+
-                "\nNumero Identificador: "+ID;
+        return  "| Nome: "+nome+" | Cpf: "+cpf+" |" +" Código: "+ID+" |";
+
     }
 }

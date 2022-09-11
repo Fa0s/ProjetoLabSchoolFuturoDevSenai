@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 public class Menu {
-
         public static void menuPrincipal() {
                 Scanner scanner = new Scanner(System.in);
                 System.out.println("___________________________________________");
@@ -11,15 +10,14 @@ public class Menu {
                 System.out.println("{ 1 } Menu de Alunos");
                 System.out.println("{ 2 } Menu de Professores");
                 System.out.println("{ 3 } Menu de Pedagogos");
+                System.out.println("{ 4 } Exibir todas as Pessoas");
+                System.out.println("{ 5 } Exibir todos os Funcionários");
                 System.out.println("\n{ 0 } Sair");
                 int menu = scanner.nextInt();
-
-
                 if (menu ==0 ) {
                         System.out.println("Saindo . . .");
                         return;
                 }else {
-
                         switch (menu) {
                                 case 1:
                                         exibeMenuAlunos();
@@ -30,13 +28,20 @@ public class Menu {
                                 case 3:
                                         exibeMenuPedagogos();
                                         break;
+                                case 4:
+                                        Pessoa.exibeTodasAsPessoas();
+                                        menuPrincipal();
+                                        break;
+                                case 5:
+                                        Pessoa.exibeFuncionarios();
+                                        menuPrincipal();
+                                        break;
                                 case 0:
                                         return;
                                 default:
                                         System.out.println("Opção inválida!");
                                         menuPrincipal();
                                         break;
-
                         }
                 }
         }
@@ -49,11 +54,11 @@ public class Menu {
                 System.out.println("{ 1 } Adicionar aluno");
                 System.out.println("{ 2 } Listar alunos");
                 System.out.println("{ 3 } Alterar matricula");
-                System.out.println("{ 4 } Exibir alunos com maior numero de atendimentos pedagogicos");
-                System.out.println("{ 5 } Voltar");
+                System.out.println("{ 4 } Exibir alunos com maior numero de atendimentos pedagógicos");
+                System.out.println("{ 5 } Listar alunos pelo estado da matrícula");
+                System.out.println("{ 6 } Voltar");
                 System.out.println("\n{ 0 } Sair");
                 int menu = scanner.nextInt();
-
                 if (menu ==0 ) {
                         System.out.println("Saindo . . .");
                         return;
@@ -68,7 +73,7 @@ public class Menu {
                                         exibeMenuAlunos();
                                         break;
                                 case 3:
-                                        Aluno.alterarMatricula(); //pedir indice
+                                        Aluno.alterarMatricula();
                                         exibeMenuAlunos();
                                         break;
                                 case 4:
@@ -76,6 +81,10 @@ public class Menu {
                                         exibeMenuAlunos();
                                         break;
                                 case 5:
+                                        Aluno.listarPorMatricula();
+                                        exibeMenuAlunos();
+                                        break;
+                                case 6:
                                         menuPrincipal();
                                         break;
                                 case 0:
@@ -96,18 +105,16 @@ public class Menu {
                 System.out.println("{ 1 } Adicionar Professor");
                 System.out.println("{ 2 } Listar todos os professores");
                 System.out.println("{ 3 } Listar professores por experiência em desenvolvimento");
-                System.out.println("{ 4 } Listar professores por estado de atividade");
-                System.out.println("{ 5 } Voltar");
+                System.out.println("{ 4 } Voltar");
                 System.out.println("\n{ 0 } Sair");
                 int menu = scanner.nextInt();
-
                 if (menu ==0 ) {
                         System.out.println("Saindo . . .");
                         return;
                 }else {
                         switch (menu){
                                 case 1:
-                                        Professor.adicionarProfessor(Professor.listaDeProfessores);
+                                        Professor.adicionarProfessor();
                                         exibeMenuProfessores();
                                         break;
                                 case 2:
@@ -119,10 +126,6 @@ public class Menu {
                                         exibeMenuProfessores();
                                         break;
                                 case 4:
-                                        Professor.ListarProfessoresPorAtividade();
-                                        exibeMenuProfessores();
-                                        break;
-                                case 5:
                                         menuPrincipal();
                                         break;
                                 case 0:
@@ -147,7 +150,6 @@ public class Menu {
                 System.out.println("{ 5 } Voltar");
                 System.out.println("\n{ 0 } Sair");
                 int menu = scanner.nextInt();
-
                 if (menu ==0 ) {
                         System.out.println("Saindo . . .");
                         return;
@@ -181,8 +183,4 @@ public class Menu {
                         }
                 }
         }
-
-
-
-
 }

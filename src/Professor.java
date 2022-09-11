@@ -3,11 +3,9 @@ import java.util.Scanner;
 
 public class Professor extends Pessoa{
     private String graduacao;
-    private String experienciaDev="";
+    private String experienciaDev;
     private String estado;
-
-    static ArrayList<Professor> listaDeProfessores = new ArrayList<>();
-
+    private static ArrayList<Professor> listaDeProfessores = new ArrayList<>();
 
     public Professor(String nome, String telefone, String dataNascimento, String cpf) {
         super(nome, telefone, dataNascimento, cpf);
@@ -15,7 +13,7 @@ public class Professor extends Pessoa{
         defineExperienciaDev();
         defineEstado();
     }
-    public static void adicionarProfessor(ArrayList<Professor> professores) {
+    public static void adicionarProfessor() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Digite o nome do Professor: ");
         String nome = scanner.nextLine();
@@ -29,7 +27,7 @@ public class Professor extends Pessoa{
         System.out.println("Digite o cpf: ");
         String cpf =  scanner.next();
 
-        professores.add(new Professor(nome,telefone,dataNascimento,cpf));
+        Professor.getListaDeProfessores().add(new Professor(nome,telefone,dataNascimento,cpf));
     }
 
     public String defineFormacaoAcademica(){
@@ -109,7 +107,6 @@ public class Professor extends Pessoa{
         return estado;
     }
 
-
     public static void listarProfessores() {
         if (listaDeProfessores.size() == 0)
             System.out.println("\nSua lista de professores está vazia!\n");
@@ -125,7 +122,7 @@ public class Professor extends Pessoa{
         Scanner scanner = new Scanner(System.in);
         ArrayList<Professor> professoresDev = new ArrayList<>();
         String filtroDev="";
-        System.out.println("Selecione a area de desenvolvimento:");
+        System.out.println("\nSelecione a area de desenvolvimento:");
         System.out.println("{ 1 } Front-End");
         System.out.println("{ 2 } Back-End");
         System.out.println("{ 3 } Full-Stack");
@@ -140,22 +137,20 @@ public class Professor extends Pessoa{
                 break;
             case 3:
                 filtroDev = "Full-Stack";
+                break;
             default:
                 System.out.println("Opção inválida!");
+                ListarProfessoresPorExperienciaDev();
+                break;
         }
         for (Professor listaDeProfessore : listaDeProfessores) {
             if (filtroDev.equalsIgnoreCase(listaDeProfessore.getExperienciaDev())) {
                 professoresDev.add(listaDeProfessore);
             }
         }
-
         for (Professor professor : professoresDev) {
             System.out.println(professor.toString());
         }
-    }
-
-
-    public static void ListarProfessoresPorAtividade() {
     }
 
     public String getGraduacao() {
@@ -193,7 +188,7 @@ public class Professor extends Pessoa{
     @Override
     public String toString() {
         super.toString();
-        return super.toString()+"\nGraduação "+graduacao+"\nExperiência em desenvolvimento: "+experienciaDev+"\nEstado: "+estado;
+        return super.toString()+"Graduação: "+graduacao+" | Experiência em desenvolvimento: "+experienciaDev+" | Estado: "+estado+" |";
     }
 
 }

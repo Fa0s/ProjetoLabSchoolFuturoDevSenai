@@ -5,15 +5,13 @@ import java.util.Scanner;
 public class Pedagogo extends Pessoa{
     static ArrayList<Pedagogo> listaDePedagogos = new ArrayList<>();
     private int numeroDeAtendimentos = 0;
-
     public Pedagogo(String nome, String telefone, String dataNascimento, String cpf) {
         super(nome, telefone, dataNascimento, cpf);
     }
-
     public static void adicionarPedagogo(ArrayList<Pedagogo> pedagogos){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Digite o nome do Pedagogo: ");
-        String nome = scanner.next();
+        String nome = scanner.nextLine();
 
         System.out.println("Digite o telefone: ");
         String telefone = scanner.next();
@@ -70,7 +68,6 @@ public class Pedagogo extends Pessoa{
     public static void adicionaAtendimento(Pedagogo pedagogo){
         pedagogo.adicionaAtendimento();
     }
-    //_____________________________GETTER E SETTER_______________________________________________
     public static ArrayList<Pedagogo> getListaDePedagogos() {
         return listaDePedagogos;
     }
@@ -87,9 +84,6 @@ public class Pedagogo extends Pessoa{
         this.numeroDeAtendimentos = numeroDeAtendimentos;
     }
 
-
-
-//__________________________________TO STRING___________________________________________________
     @Override
     public String toString() {
         super.toString();
