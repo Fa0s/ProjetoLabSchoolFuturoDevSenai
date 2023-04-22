@@ -1,10 +1,15 @@
 <h1 align='center'> Projeto LabSchool</h1>
-<div align='center'><a href='www.java.com'><img src='https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white'></a></img></div>
+<div align='center'>
+    <a href='https://www.java.com/en/'>
+        <img src='https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white'>
+        </img>
+    </a>
+</div>
 
 # 📰 Índice
 
 - [Sobre](#-Sobre)
-- [Requisitos da Aplicação](#-Requisitos-da-Apliçao)
+- [Requisitos da Aplicação](#-Requisitos-da-Aplicaçao)
 - [Roteiro da Aplicação](#-Roteiro-da-Aplicação)
 - [Plano de Projeto](#-Plano-de-Projeto)
 <br></br>
