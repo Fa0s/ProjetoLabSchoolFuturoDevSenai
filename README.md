@@ -9,7 +9,7 @@
 # 📰 Índice
 
 - [Sobre](#-Sobre)
-- [Requisitos da Aplicação](#-Requisitos-da-Aplicaçao)
+- [Requisitos da Aplicação](#-Requisitos-da-Aplicação)
 - [Roteiro da Aplicação](#-Roteiro-da-Aplicação)
 - [Plano de Projeto](#-Plano-de-Projeto)
 <br></br>
