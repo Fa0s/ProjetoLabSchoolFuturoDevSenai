@@ -1,4 +1,4 @@
-<h1 align='center'> Projeto LabSchool</h1>
+<h1 align='center'> 🚀 Projeto LabSchool</h1>
 <div align='center'>
     <a href='https://www.java.com/en/'>
         <img src='https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white'>
